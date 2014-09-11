@@ -1,5 +1,5 @@
 ---
-title: "Home advantage effect in Brazilian Soccer Championship"
+title: "Home advantage effect over players in Brazilian Soccer Championship"
 author: "Rodrigo Volponi Leal"
 date: "2014-09-22"
 output:
@@ -18,11 +18,22 @@ output:
 
 ### Introduction:
 
-Insert introduction here...
+In *Soccer*, there is a belief that is a significant advantage for a team to play in its own stadium, with support of its fan-base. Likewise, it would be a disadvantage to play in the opponent's field. 
+
+This is known as "*Home Field Advantage*" ([Wikipedia article](http://en.wikipedia.org/wiki/Home_advantage)).
+
+This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2013.
+
+*Research Question*
+In Brazilian Soccer, playing in the "home field" effect the performance of the players?
 
 ### Data:
 
-Insert data section here...
+The data avaliable is from the 2013 Brazilian National Series A Championship of 2013 ([Wikipedia Campeonato Brasileiro Série A](http://en.wikipedia.org/wiki/Campeonato_Brasileiro_S%C3%A9rie_A)).
+
+The player data, scouts and overall performance is avaliable at this project GitHub page:
+https://github.com/volponi/coursera-dataanalysis-project/blob/master/2013_brazilian_championship_stats.csv
+
 
 ### Exploratory data analysis:
 
