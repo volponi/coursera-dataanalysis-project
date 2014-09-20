@@ -11,7 +11,7 @@ output:
 
 <!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
 ```{r echo=FALSE}
-
+scouts <- read.csv(url("http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv"))
 ```
 
 <!-- In the remainder of the document, add R code chunks as needed -->
@@ -22,27 +22,45 @@ In *Soccer*, there is a belief that is a significant advantage for a team to pla
 
 This is known as "*Home Field Advantage*" ([Wikipedia article](http://en.wikipedia.org/wiki/Home_advantage)).
 
-This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2013.
+This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2013, and try to answer if this effect is backed up by real information of the matches.
 
-*Research Question*
+#### Research Question ####
 In Brazilian Soccer, playing in the "home field" effect the performance of the players?
 
 ### Data:
 
-The data avaliable is from the 2013 Brazilian National Series A Championship of 2013 ([Wikipedia Campeonato Brasileiro Série A](http://en.wikipedia.org/wiki/Campeonato_Brasileiro_S%C3%A9rie_A)).
+```{r}
+head(scouts,20)
+```
 
-The player data, scouts and overall performance is avaliable at this project GitHub page:
-https://github.com/volponi/coursera-dataanalysis-project/blob/master/2013_brazilian_championship_stats.csv
+#### Data Citation ####
+The data avaliable is from the 2013 Brazilian National Series A Championship of 2013.
 
+The player data, scouts and overall performance is made avaliable by the ScoutsCartola (www.scoutscartola.com) website at:
+http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv
+
+The data represents performances (scores based on scouts) for all players in all the 2013 matches of the Brazilian soccer championship.
+
+
+#### Raw Data ####
+* **championship_match_id**: the code that represent a distinct game. Categorical.
+* **player_id**: the code that represents a soccer player. Categorical.
+* **player_club_name**: the player's team name. Categorical.
+* **player_match_field**: if the player is in his home field or away field. Categorical.
+* **player_match_score**: the overall score for the player in a specific game. This is calculated based on scouts (quantity of goals, quantity of successful passes, quantity of bad passes, etc), and is used to compare the performance of distinct player types (goalkeeper, midfield, forwards). Numerical.
 
 ### Exploratory data analysis:
 
-Insert exploratory data analysis here...
+#### Variables ####
+For this analysis, the two variables chosen are:
+* player_match_field
+* player_match_score
+
 
 ### Inference:
 
-Insert inference section here...
+(To be done)
 
 ### Conclusion:
 
-Insert conclusion here...
+(To be done)

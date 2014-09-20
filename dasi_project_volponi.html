@@ -68,12 +68,72 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="introduction" class="section level3">
 <h3>Introduction:</h3>
-<p>In <em>Brazilian Soccer</em>, there is a belief that is an advantage for a team to play in its own stadium, with support of its fanbase. Likewise, it would be a disvantage to play in the opponent’s field.</p>
+<p>In <em>Soccer</em>, there is a belief that is a significant advantage for a team to play in its own stadium, with support of its fan-base. Likewise, it would be a disadvantage to play in the opponent’s field.</p>
 <p>This is known as “<em>Home Field Advantage</em>” (<a href="http://en.wikipedia.org/wiki/Home_advantage">Wikipedia article</a>).</p>
+<p>This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2013, and try to answer if this effect is backed up by real information of the matches.</p>
+<div id="research-question" class="section level4">
+<h4>Research Question</h4>
+<p>In Brazilian Soccer, playing in the “home field” effect the performance of the players?</p>
+</div>
 </div>
 <div id="data" class="section level3">
 <h3>Data:</h3>
-<p>Insert data section here…</p>
+<pre class="r"><code>head(scouts,20)</code></pre>
+<pre><code>##     X championship_match_id player_id player_club_name player_match_field
+## 1   1                  4043     62012      Atlético-PR               away
+## 2   2                  4043     69014      Atlético-PR               away
+## 3   3                  4043     37826      Atlético-PR               away
+## 4   4                  4043     51779      Atlético-PR               away
+## 5   5                  4043     80281      Atlético-PR               away
+## 6   6                  4043     73446      Atlético-PR               away
+## 7   7                  4043     69018      Atlético-PR               away
+## 8   8                  4043     62139      Atlético-PR               away
+## 9   9                  4043     69022      Atlético-PR               away
+## 10 10                  4043     56102      Atlético-PR               away
+## 11 11                  4043     50301      Atlético-PR               away
+## 12 12                  4043     71631      Atlético-PR               away
+## 13 13                  4043     71113      Atlético-PR               away
+## 14 14                  4043     69177      Atlético-PR               away
+## 15 15                  4043     68974      Atlético-PR               away
+## 16 16                  4043     71892       Fluminense               home
+## 17 17                  4043     40006       Fluminense               home
+## 18 18                  4043     74059       Fluminense               home
+## 19 19                  4043     37627       Fluminense               home
+## 20 20                  4043     73353       Fluminense               home
+##    player_match_score
+## 1               -4.00
+## 2               13.50
+## 3                0.70
+## 4                1.10
+## 5                0.40
+## 6                7.10
+## 7                4.30
+## 8                2.84
+## 9                3.50
+## 10               5.50
+## 11               2.60
+## 12              -1.00
+## 13              -0.40
+## 14              -2.10
+## 15               0.00
+## 16               3.50
+## 17               5.16
+## 18               6.60
+## 19               6.40
+## 20              -1.40</code></pre>
+<p>The data avaliable is from the 2013 Brazilian National Series A Championship of 2013 (<a href="http://en.wikipedia.org/wiki/Campeonato_Brasileiro_S%C3%A9rie_A">Wikipedia Campeonato Brasileiro Série A</a>).</p>
+<p>The data represents performances (scores based on scouts) for all players in all the 2013 matches of the Brazilian soccer championship.</p>
+<p>The player data, scouts and overall performance is made avaliable by the ScoutsCartola website at: <a href="http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv">http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv</a></p>
+<div id="raw-data" class="section level4">
+<h4>Raw Data</h4>
+<ul>
+<li><strong>championship_match_id</strong>: the code that represent a distinct game. Categorical.</li>
+<li><strong>player_id</strong>: the code that represents a soccer player. Categorical.</li>
+<li><strong>player_club_name</strong>: the player’s team name. Categorical.</li>
+<li><strong>player_match_score</strong>: the overall score for the player in a specific game. This is calculated based on scouts (quantity of goals, quantity of successful passes, quantity of bad passes, etc), and is used to compare the performance of distinct player types (goalkeeper, midfield, forwards, coach). Numerical.</li>
+</ul>
+<p><strong>Variables</strong> For this analysis,</p>
+</div>
 </div>
 <div id="exploratory-data-analysis" class="section level3">
 <h3>Exploratory data analysis:</h3>
