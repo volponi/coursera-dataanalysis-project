@@ -140,9 +140,6 @@ table1</code></pre>
 <pre><code>## General    Away    Home 
 ##   2.679   2.186   3.171</code></pre>
 <p>This information sugests that there is a</p>
-<p>EXPLORATORY DATA ANALYSIS: Perform a brief exploratory data analysis - just one or two relevant descriptive statistics and visualizations of the data. Also address what the exploratory data analysis suggests about your research question.</p>
-<p>You can include summary statistics in your write up in the space provided below by copying and pasting the R output, however you must upload your plot(s) as a separate PDF or image (PNG/JPG/etc.) file. Make sure to provide a discussion/interpretation of any summary statistic or plot you include.</p>
-<p>Note: This is not required to be an exhaustive exploratory data analysis (you can save that for the second phase), instead it’s just intended to ensure that you have successfully imported your data set into R such that you can produce plots and numerical summaries.</p>
 </div>
 <div id="inference" class="section level3">
 <h3>Inference:</h3>
@@ -152,12 +149,31 @@ table1</code></pre>
 <h3>Conclusion:</h3>
 <p>(To be done)</p>
 </div>
-<div id="rascunhos" class="section level2">
-<h2>rascunhos</h2>
-<p>The data represents performances (scores based on scouts) of all players in 217 of the first 220 matches (98.63%) at the Brazilian soccer championship.</p>
-<p>For each relevant action done by the player (for example, a successful pass or a goal missed) there is a score (ranging from -6 to a own goal up to +8 point to scoring a goal). All the actions the player does is tabulated and scored. The resulting number (player match score) indicates the overall influence the player had in a match (negative, neutral or positive).</p>
-<div id="raw-data" class="section level4">
-<h4>Raw Data</h4>
+<div id="sample-data" class="section level3">
+<h3>Sample Data:</h3>
+<pre class="r"><code>head(raw_data[,c(2,3,6,7)], n=20)</code></pre>
+<pre><code>##    championship_match_id player_id player_match_field player_match_score
+## 1                   8512     68872               home              -4.00
+## 2                   8512     70874               home               8.70
+## 3                   8512     50353               home               2.60
+## 4                   8512     38507               home              -0.60
+## 5                   8512     82502               home               0.40
+## 6                   8512     50532               home               2.50
+## 7                   8512     68723               home              -1.50
+## 8                   8512     73530               home               0.00
+## 9                   8512     88075               home              -0.50
+## 10                  8512     41364               home               3.40
+## 11                  8512     84099               home              13.50
+## 12                  8512     69209               home               2.70
+## 13                  8512     53472               home              -2.40
+## 14                  8512     81031               home               2.45
+## 15                  8512     87213               home               2.10
+## 16                  8512     37656               away               4.00
+## 17                  8512     50358               away               7.70
+## 18                  8512     38573               away               5.40
+## 19                  8512     37794               away              -1.70
+## 20                  8512     42145               away               0.10</code></pre>
+<p><strong>Raw data variables</strong></p>
 <ul>
 <li><strong>championship_match_id</strong>: the code that represent a distinct game. Categorical.</li>
 <li><strong>player_id</strong>: the code that represents a soccer player. Categorical.</li>
@@ -165,7 +181,6 @@ table1</code></pre>
 <li><strong>player_match_field</strong>: if the player is in his home field or away field. Categorical.</li>
 <li><strong>player_match_score</strong>: the overall score for the player in a specific game. This is calculated based on scouts (quantity of goals, quantity of successful passes, quantity of bad passes, etc), and is used to compare the performance of distinct player types (goalkeeper, midfield, forwards). Numerical.</li>
 </ul>
-</div>
 </div>
 
 

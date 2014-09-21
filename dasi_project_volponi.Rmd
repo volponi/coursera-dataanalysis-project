@@ -144,13 +144,13 @@ This information sugests that there is a
 
 
 
-## rascunhos ##
-The data represents performances (scores based on scouts) of all players in 217 of the first 220 matches (98.63%) at the Brazilian soccer championship.
+### Sample Data: ###
+```{r}
+head(raw_data[,c(2,3,6,7)], n=20)
+```
 
-For each relevant action done by the player (for example, a successful pass or a goal missed) there is a score (ranging from -6 to a own goal up to +8 point to scoring a goal). All the actions the player does is tabulated and scored. The resulting number (player match score) indicates the overall influence the player had in a match (negative, neutral or positive).
+**Raw data variables**
 
-
-#### Raw Data ####
 * **championship_match_id**: the code that represent a distinct game. Categorical.
 * **player_id**: the code that represents a soccer player. Categorical.
 * **player_club_name**: the player's team name. Categorical.
