@@ -11,51 +11,128 @@ output:
 
 <!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
 ```{r echo=FALSE}
-scouts <- read.csv(url("http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv"))
+raw_data <- read.csv(url("http://www.scoutscartola.com/files/2014_brazilian_championship_stats.csv"))
 ```
 
 <!-- In the remainder of the document, add R code chunks as needed -->
 
+
+
 ### Introduction:
 
-In *Soccer*, there is a belief that is a significant advantage for a team to play in its own stadium, with support of its fan-base. Likewise, it would be a disadvantage to play in the opponent's field. 
+In **Soccer**, there is a belief that is a significant advantage for a team to play in its own stadium, with support of its fan-base. Likewise, it would be a disadvantage to play in the opponent's field. 
 
-This is known as "*Home Field Advantage*" ([Wikipedia article](http://en.wikipedia.org/wiki/Home_advantage)).
+This is known as "**Home Field Advantage**" ([Wikipedia article](http://en.wikipedia.org/wiki/Home_advantage)).
 
-This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2013, and try to answer if this effect is backed up by real information of the matches.
+This project will explore the effect of the home field advantage in the overall performance of the players in Brazilian National Series A Championship of 2014, and try to answer if this effect is backed up by real information of the matches.
 
-#### Research Question ####
-In Brazilian Soccer, playing in the "home field" effect the performance of the players?
+
+
+#### Research Question: ####
+**In Brazilian Soccer, playing in the "home field" effect the performance of the players?**
+
+
+
 
 ### Data:
-
-```{r}
-head(scouts,20)
-```
-
-#### Data Citation ####
-The data avaliable is from the 2013 Brazilian National Series A Championship of 2013.
-
-The player data, scouts and overall performance is made avaliable by the ScoutsCartola (www.scoutscartola.com) website at:
-http://www.scoutscartola.com/files/2013_brazilian_championship_stats.csv
-
-The data represents performances (scores based on scouts) for all players in all the 2013 matches of the Brazilian soccer championship.
+The data available is from the ongoing 2014 Brazilian National Series A Championship.
 
 
-#### Raw Data ####
-* **championship_match_id**: the code that represent a distinct game. Categorical.
-* **player_id**: the code that represents a soccer player. Categorical.
-* **player_club_name**: the player's team name. Categorical.
-* **player_match_field**: if the player is in his home field or away field. Categorical.
-* **player_match_score**: the overall score for the player in a specific game. This is calculated based on scouts (quantity of goals, quantity of successful passes, quantity of bad passes, etc), and is used to compare the performance of distinct player types (goalkeeper, midfield, forwards). Numerical.
+**Citation:**
+
+The player data, scouts and overall performance is made available by the ScoutsCartola (www.scoutscartola.com) website, a Brazilian site specialized in soccer data, at:
+http://www.scoutscartola.com/files/2014_brazilian_championship_stats.csv
+
+
+**Data Collection:**
+
+Most of the soccer games of this championship were video recorded and analysed. It is almost a 'census' of that soccer championship, covering 98% of the matches and 100% of the players. The data avaliable if for 217 of 220 already played matches of 2014 (22 rounds passed, 38 rounds in total).
+
+
+**Cases:**
+
+Each case represents a player's performance in a specific match of the championship. There are 20 clubs, with 22 rounds so far (16 to go), and 217 of the 220 matches available (380 for the whole championship). 
+
+Each team have 11 players plus 1 coach, and some players can be substituted, so in a match a club can have up to 16 different players analysed.
+
+In total, there are 6453 observations (player performances).
+
+
+**Variables:**
+
+For this analysis, the two chosen variables are:
+
+* player_match_field - information if the player was in a home or away field. Categorical (home, away).
+* player_match_score - the overall score for the player in a specific game. Numerical.
+
+
+**Type of study:**
+
+This is an observational study, as all the data has already been gathered. It is almost a 'census' of that soccer championship, covering 98% of the matches so far and 100% of the players.
+
+
+**Scope of inference - generalizability:**
+
+The data avaliable if for the first 22 rounds of the 38 total rounds (as the championship is ongoing), and 217 of total 380 games were analised (57.1%). With this amount of data, we are pretty sure that is possible to sample with enough confidence to generalize results for the whole championship.
+
+Although we can be certain that this data will prove or disprove the "home effect" for this context, a lot of different issues can challenge the generalization of this study, for instance:
+
+* Data from the beginning of the year - we can't be sure if the "home effect" vary in the beggning of the end of the championship. The data available is just for the 57% first matches.
+* Type of tournament or type of rules - this is a championship data (all clubs play each other in 2 games - home and away). For other types of soccer tournaments, like a cup (bracket-type) a hybrid championship-cup (qualifying phase plus brackets), this "home effect" may vary a lot.
+* Distance between cities - if both clubs are from the same city, does this "home effect" still counts? This study will not take this into account
+* Number of supporters and stadium assistance - the "home effect" may be dependent of the number of supporters in a match
+* Other sports - the "home effect" may be true to soccer, but not to other group sports (like basketball or volleyball).
+* Culture - this "home effect" may be cultural and specific of the country analysed
+
+
+**Scope of inference - causality:**
+
+As an observational study, we cannot infer with certainty about the causality of the "home effect".
+
+
+
 
 ### Exploratory data analysis:
 
-#### Variables ####
-For this analysis, the two variables chosen are:
-* player_match_field
-* player_match_score
+First, we need to subset the data to grab only the variables of interest.
 
+```{r}
+scouts <- subset(raw_data, select = c(player_match_field,player_match_score))
+```
+
+To begin our analysis, we will plot the histogram and the boxplot of the data.
+We can say that the player score forms a nearly normal distribution, somewhat simmetrical and slighly right-skewed.
+
+```{r}
+# histogram
+hist(scouts$player_match_score, breaks = 50, xlab = "Player Score", main = "Histogram of all players")
+```
+
+
+From the summary, the mean score is 2.68, with a standard deviation of 4.04.
+```{r}
+# summary
+summary(scouts$player_match_score)
+sd(scouts$player_match_score)
+```
+
+
+One valuable analysis we can do is to compare away and home performances to the general data.
+
+```{r}
+# Subsetting the data
+scouts_home <- subset(scouts, scouts$player_match_field == "home", select = player_match_score)
+scouts_away <- subset(scouts, scouts$player_match_field == "away", select = player_match_score)
+
+# calculating means
+table1 = c(mean(scouts$player_match_score), mean(scouts_away$player_match_score), mean(scouts_home$player_match_score))
+names(table1) = c("General","Away","Home")
+
+# means
+table1
+```
+
+This information sugests that there is a 
 
 ### Inference:
 
@@ -64,3 +141,18 @@ For this analysis, the two variables chosen are:
 ### Conclusion:
 
 (To be done)
+
+
+
+## rascunhos ##
+The data represents performances (scores based on scouts) of all players in 217 of the first 220 matches (98.63%) at the Brazilian soccer championship.
+
+For each relevant action done by the player (for example, a successful pass or a goal missed) there is a score (ranging from -6 to a own goal up to +8 point to scoring a goal). All the actions the player does is tabulated and scored. The resulting number (player match score) indicates the overall influence the player had in a match (negative, neutral or positive).
+
+
+#### Raw Data ####
+* **championship_match_id**: the code that represent a distinct game. Categorical.
+* **player_id**: the code that represents a soccer player. Categorical.
+* **player_club_name**: the player's team name. Categorical.
+* **player_match_field**: if the player is in his home field or away field. Categorical.
+* **player_match_score**: the overall score for the player in a specific game. This is calculated based on scouts (quantity of goals, quantity of successful passes, quantity of bad passes, etc), and is used to compare the performance of distinct player types (goalkeeper, midfield, forwards). Numerical.
