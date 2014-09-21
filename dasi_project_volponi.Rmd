@@ -46,7 +46,7 @@ http://www.scoutscartola.com/files/2014_brazilian_championship_stats.csv
 
 **Data Collection:**
 
-Most of the soccer games of this championship were video recorded and analysed. It is almost a 'census' of that soccer championship, covering 98% of the matches and 100% of the players. The data avaliable if for 217 of 220 already played matches of 2014 (22 rounds passed, 38 rounds in total).
+Most of the soccer games of this championship were video recorded and analysed. It is almost a 'census' of that soccer championship, covering 98% of the matches and 100% of the players. The data available if for 217 of 220 already played matches of 2014 (22 rounds passed, 38 rounds in total).
 
 
 **Cases:**
@@ -73,11 +73,11 @@ This is an observational study, as all the data has already been gathered. It is
 
 **Scope of inference - generalizability:**
 
-The data avaliable if for the first 22 rounds of the 38 total rounds (as the championship is ongoing), and 217 of total 380 games were analised (57.1%). With this amount of data, we are pretty sure that is possible to sample with enough confidence to generalize results for the whole championship.
+The data available if for the first 22 rounds of the 38 total rounds (as the championship is ongoing), and 217 of total 380 games were analysed (57.1%). With this amount of data, we are pretty sure that is possible to sample with enough confidence to generalize results for the whole championship.
 
 Although we can be certain that this data will prove or disprove the "home effect" for this context, a lot of different issues can challenge the generalization of this study, for instance:
 
-* Data from the beginning of the year - we can't be sure if the "home effect" vary in the beggning of the end of the championship. The data available is just for the 57% first matches.
+* Data from the beginning of the year - we can't be sure if the "home effect" vary in the beginning of the end of the championship. The data available is just for the 57% first matches.
 * Type of tournament or type of rules - this is a championship data (all clubs play each other in 2 games - home and away). For other types of soccer tournaments, like a cup (bracket-type) a hybrid championship-cup (qualifying phase plus brackets), this "home effect" may vary a lot.
 * Distance between cities - if both clubs are from the same city, does this "home effect" still counts? This study will not take this into account
 * Number of supporters and stadium assistance - the "home effect" may be dependent of the number of supporters in a match
@@ -100,8 +100,8 @@ First, we need to subset the data to grab only the variables of interest.
 scouts <- subset(raw_data, select = c(player_match_field,player_match_score))
 ```
 
-To begin our analysis, we will plot the histogram and the boxplot of the data.
-We can say that the player score forms a nearly normal distribution, somewhat simmetrical and slighly right-skewed.
+To begin our analysis, we will plot the histogram of the data.
+We can say that the player score forms a nearly normal distribution, somewhat symmetrical and slightly right-skewed.
 
 ```{r}
 # histogram
@@ -132,7 +132,7 @@ names(table1) = c("General","Away","Home")
 table1
 ```
 
-This information sugests that there is a 
+This information suggests that there is a divide between the "away" and "home" mean performances (2.18 versus 3.18), thus supporting the hypothesis of a positive "home effect" in Brazilian soccer games. 
 
 ### Inference:
 
